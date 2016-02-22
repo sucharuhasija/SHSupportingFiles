@@ -123,5 +123,115 @@
 {
     return [NSString stringWithFormat:format, value];
 }
+-(NSInteger)getAge :(NSString*)date
+{
+    // Get current date time
+    
+    //NSDate *currentDateTime = [NSDate date];
+    
+    // Instantiate a NSDateFormatter
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    // Set the dateFormatter format
+    
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    
+    // or this format to show day of the week Sat,11-12-2011 23:27:09
+    
+    
+    // Get the date time in NSString
+    
+    NSDate *dateInStringFormated = [dateFormatter dateFromString:date];
+    
+    NSDate* now = [NSDate date];
+    NSDateComponents* ageComponents = [[NSCalendar currentCalendar]
+                                       components:NSCalendarUnitYear
+                                       fromDate:dateInStringFormated
+                                       toDate:now
+                                       options:0];
+    NSInteger age = [ageComponents year];
+    return age;
+}
 
+-(NSString*)getBirthDate :(NSString*)date
+{
+    // Get current date time
+    
+    //NSDate *currentDateTime = [NSDate date];
+    
+    // Instantiate a NSDateFormatter
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    // Set the dateFormatter format
+    
+    [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+    
+    // or this format to show day of the week Sat,11-12-2011 23:27:09
+    
+    
+    // Get the date time in NSString
+    
+    NSDate *dateInStringFormated = [dateFormatter dateFromString:date];
+    
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    
+    NSString *dateInString = [dateFormatter stringFromDate:dateInStringFormated];
+    
+    return dateInString;
+    
+}
+
+
+-(NSString*)getCurrentTime
+{
+    NSDate *currentDateTime = [NSDate date];
+    // Instantiate a NSDateFormatter
+    NSDateFormatter *dateFormatter = [self dateFormatter];
+    // Set the dateFormatter format
+    //[dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    // or this format to show day of the week Sat,11-12-2011 23:27:09
+    [dateFormatter setDateFormat:@"HH:mm"];
+    // Get the date time in NSString
+    NSString *dateInStringFormated = [dateFormatter stringFromDate:currentDateTime];
+    return dateInStringFormated;
+}
+-(NSString *) getCurrentDate
+{
+   
+    // Instantiate a NSDateFormatter
+    NSDateFormatter *dateFormatter = [self dateFormatter];
+    // Set the dateFormatter format
+    //[dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    // or this format to show day of the week Sat,11-12-2011 23:27:09
+    [dateFormatter setDateFormat:@"YYYY:MM:DD"];
+    // Get the date time in NSString
+   return [dateFormatter stringFromDate:self];
+
+
+}
+-(NSDateFormatter *) dateFormatter
+{
+
+
+return [[NSDateFormatter alloc] init];
+
+}
+
+-(NSString *)getCurrentDateWithFormat:(NSString *) format
+{
+
+
+
+    NSDateFormatter *dateFormatter = [self dateFormatter];
+    // Set the dateFormatter format
+    //[dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    // or this format to show day of the week Sat,11-12-2011 23:27:09
+    [dateFormatter setDateFormat:format];
+    // Get the date time in NSString
+    return [dateFormatter stringFromDate:self];
+
+
+}
 @end

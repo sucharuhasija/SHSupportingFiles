@@ -11,13 +11,26 @@
 #import <CoreLocation/CoreLocation.h>
 
 typedef void(^DidUpdateLocation)(CLLocation *newLocation,CLLocation *oldLocation,NSError *error);
+typedef  void (^ LocationDetails)(NSDictionary * objectcompletionBlock);
+@protocol  LocationDidUpdateProtocol
+
+-(void)locationUpdatedWithBlock:(NSDictionary *) dict;
+
+
+@end
 
 @interface LocationHelper : NSObject<CLLocationManagerDelegate>
 {
     CLLocationManager *locationManager;
     DidUpdateLocation blockDidUpdate;
+    LocationDetails  details;
+    CLLocation * currentLocation;
 }
+
+@property(retain,nonatomic) id<LocationDidUpdateProtocol> delegate;
+
 -(id)init;
+
 +(LocationHelper *)sharedObject;
 
 -(void)locationPermissionAlert;
@@ -26,5 +39,5 @@ typedef void(^DidUpdateLocation)(CLLocation *newLocation,CLLocation *oldLocation
 -(void)stopLocationUpdating;
 
 -(void)startLocationUpdatingWithBlock:(DidUpdateLocation)block;
-
+-(void)getLocationDetailsWithCompletionBlock:(LocationDetails)blockDetails;
 @end

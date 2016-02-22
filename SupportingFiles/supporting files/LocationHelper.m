@@ -117,53 +117,62 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
-    CLLocation *currentLocation = newLocation;
+    CLLocation *currentLocation1 = newLocation;
     NSLog(@"didUpdateToLocation: %@", currentLocation);
-    if (currentLocation != nil) {
+    if (currentLocation1 != nil) {
         
         
-        CLLocation *currentLocation = newLocation;
+        currentLocation = newLocation;
         [manager stopUpdatingLocation];
-        
-        CLGeocoder *geocoder = [[CLGeocoder alloc] init] ;
-        [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error)
+ 
+}
+}
+
+- (void)locationManagerDidPauseLocationUpdates:(CLLocationManager *)manager
+{
+    NSLog(@"Paused Updatting");
+}
+
+- (void)locationManagerDidResumeLocationUpdates:(CLLocationManager *)manager
+{
+    NSLog(@"Resumed Updatting");
+}
+-(void)getLocationDetailsWithCompletionBlock:(void (^)(NSDictionary * object))completionBlock
+
+{
+    if(currentLocation != nil)
+    {
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init] ;
+    [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error)
+     {
+         if (!(error))
          {
-             if (!(error))
-             {
-                 CLPlacemark *placemark = [placemarks objectAtIndex:0];
-                 NSLog(@"\nCurrent Location Detected\n");
-                 NSLog(@"placemark %@",placemark);
-                 // NSString *locatedAt = [[placemark.addressDictionary valueForKey:@"FormattedAddressLines"] componentsJoinedByString:@", "];
-                 NSString  *strForCurrentLongitude= [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.longitude];
-                 NSString  *strForCurrentLatitude = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.latitude];
-                 //NSString *Address = [[NSString alloc]initWithString:locatedAt];
-                 NSString *Zipcode = [[NSString alloc]initWithString:placemark.postalCode];
-                 NSLog(@"%@",Zipcode);
-                 NSString * city = [[NSString alloc] initWithString:placemark.locality];
-  
-             }
-             else
-             {
-                 NSLog(@"Geocode failed with error %@", error); // Error handling must required
-             }
-         }];
-        
-        
+             CLPlacemark *placemark = [placemarks objectAtIndex:0];
+             NSLog(@"\nCurrent Location Detected\n");
+             NSLog(@"placemark %@",placemark);
+             NSString *locatedAt = [[placemark.addressDictionary valueForKey:@"FormattedAddressLines"] componentsJoinedByString:@", "];
+             NSString  *strForCurrentLongitude= [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.longitude];
+             NSString  *strForCurrentLatitude = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.latitude];
+             NSString *Address = [[NSString alloc]initWithString:locatedAt];
+             NSString *Zipcode = [[NSString alloc]initWithString:placemark.postalCode];
+             NSLog(@"%@",Zipcode);
+             NSString * city = [[NSString alloc] initWithString:placemark.locality];
+             
+             NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:city,@"city",Address ,@"Address",strForCurrentLatitude,@"latitude",strForCurrentLongitude,@"longitude",Zipcode,@"Zipcode", nil];
+             
+             completionBlock(dict);
+         }
+         else
+         {
+             NSLog(@"Geocode failed with error %@", error); // Error handling must required
+         }
+     }];
 
-//        [[NSUserDefaults standardUserDefaults] setCurrentLatitude:strForCurrentLatitude];
-//        [[UserDefaultHelper sharedObject]setCurrentLongitude:strForCurrentLongitude];
-    
-}
-}
-//
-//- (void)locationManagerDidPauseLocationUpdates:(CLLocationManager *)manager
-//{
-//    NSLog(@"Paused Updatting");
-//}
-//
-//- (void)locationManagerDidResumeLocationUpdates:(CLLocationManager *)manager
-//{
-//    NSLog(@"Resumed Updatting");
-//}
+    }
 
+
+
+
+
+}
 @end

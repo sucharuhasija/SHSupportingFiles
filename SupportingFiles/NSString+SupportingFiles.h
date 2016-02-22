@@ -54,4 +54,10 @@
 
 -(NSString *) gettingStartTimeFromCurrentWithGivenDate:(NSDate *) date;
 
+
+
+
+-(NSString*)getBirthDate :(NSString*)date;
+-(NSInteger)getAge ;
+
 @end

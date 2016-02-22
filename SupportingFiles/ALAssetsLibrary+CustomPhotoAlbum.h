@@ -8,7 +8,7 @@
 #import <Foundation/Foundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <UIKit/UIKit.h>
-
+#import <Photos/Photos.h>
 typedef void(^SaveImageCompletion)(NSError* error);
 
 @interface ALAssetsLibrary(CustomPhotoAlbum)

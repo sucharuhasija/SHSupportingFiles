@@ -324,6 +324,83 @@
 
 }
 
+-(NSInteger)getAge
+{
+    // Get current date time
+    
+    //NSDate *currentDateTime = [NSDate date];
+    
+    // Instantiate a NSDateFormatter
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    // Set the dateFormatter format
+    
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    
+    // or this format to show day of the week Sat,11-12-2011 23:27:09
+    
+    
+    // Get the date time in NSString
+    
+    NSDate *dateInStringFormated = [dateFormatter dateFromString:self];
+    
+    NSDate* now = [NSDate date];
+    NSDateComponents* ageComponents = [[NSCalendar currentCalendar]
+                                       components:NSCalendarUnitYear
+                                       fromDate:dateInStringFormated
+                                       toDate:now
+                                       options:0];
+    NSInteger age = [ageComponents year];
+    return age;
+}
+
+-(NSString*)getBirthDate :(NSString*)date
+{
+    // Get current date time
+    
+    //NSDate *currentDateTime = [NSDate date];
+    
+    // Instantiate a NSDateFormatter
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+  
+    
+    
+    
+    // or this format to show day of the week Sat,11-12-2011 23:27:09
+    
+    
+    // Get the date time in NSString
+    
+    NSDate *dateInStringFormated = [dateFormatter dateFromString:date];
+    NSDate* now = [NSDate date];
+    NSDateComponents* yearComponents = [[NSCalendar currentCalendar]
+                                       components:NSCalendarUnitYear
+                                       fromDate:dateInStringFormated
+                                       toDate:now
+                                       options:0];
+    NSDateComponents* monthComponents = [[NSCalendar currentCalendar]
+                                        components:NSCalendarUnitMonth
+                                        fromDate:dateInStringFormated
+                                        toDate:now
+                                        options:0];
+    NSDateComponents* dayComponent = [[NSCalendar currentCalendar]
+                                        components:NSCalendarUnitDay
+                                        fromDate:dateInStringFormated
+                                        toDate:now
+                                        options:0];
+  
+    
+    
+    
+    
+    NSString *dateInString = [NSString stringWithFormat:@" %li Years, %li Months, %li Days",[yearComponents year],[monthComponents month],[dayComponent day]];
+    
+    return dateInString;
+      
+}
 
 
 
