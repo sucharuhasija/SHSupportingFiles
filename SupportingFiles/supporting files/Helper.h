@@ -24,10 +24,7 @@
 +(void)showErrorFor:(int)errorCode;
 + (NSString *)removeWhiteSpaceFromURL:(NSString *)url;
 + (NSString *)stripExtraSpacesFromString:(NSString *)string;
-+(NSString*)getCurrentTime;
-+ (UIColor *)getColorFromHexString:(NSString *)hexString :(CGFloat)alphaValue;
-+(NSString*)getBirthDate :(NSString*)date;
-+(NSInteger)getAge :(NSString*)date;
+
 +(NSString *)ConverGMTtoLocal :(NSString*)date;
 
 @end

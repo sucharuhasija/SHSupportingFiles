@@ -10,6 +10,7 @@
 #import "STableView.h"
 #import "UITableView+helper.h"
 #import "STableViewFile.h"
+#import "UIViewController+SHSupportingFiles.h"
 @interface ViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *testTable;
@@ -28,6 +29,15 @@
     
     // first section
         [self.tableViewDescriptor addSectionDescriptor:arr];
+    
+    
+    
+    NSString * dateString = @"04/03/1992";
+    NSLog(@"%@",[self getFullAgeDetailFromDateString:dateString]);
+    
+    [self getLocationDetailsWithCompletionBlock:^(NSDictionary *object) {
+        
+    }];
     
     self.tableViewDescriptor.dataSource = self;
     self.tableViewDescriptor.delegate = self;

@@ -8,8 +8,21 @@
 
 #import <UIKit/UIKit.h>
 #import "NSString+SupportingFiles.h"
+#import "LocationHelper.h"
+#import "APTimeZones.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface UIViewController (SHSupportingFiles)
+
+
+
+
+typedef  void (^ LocationDetails)(NSDictionary * objectcompletionBlock);
+
+@interface UIViewController (SHSupportingFiles) <LocationDidUpdateProtocol>
+{
+
+}
+
 // UIAlert View
 -(void)showSimpleAlertViewWithTitle:(NSString *) title Message:(NSString *)message andSecondaryButtonTitle:(NSString *) buttonTitle;
 
@@ -34,7 +47,19 @@
 -(BOOL) isValidPassword:(NSString *) password;
 
 
+#pragma mark - Current Date With Format
 
 -(NSString *) currentDateString;
--(NSString *) currentDateStringWithFormat:(NSString *) format
+-(NSString *) currentDateStringWithFormat:(NSString *) format;
+
+#pragma mark - Get Age Year and total days in String
+
+-(NSString *)getAgeFromDateString:(NSString *)date;
+-(NSString *) getFullAgeDetailFromDateString:(NSString *) date;
+
+#pragma mark - Location Call Blocks
+-(void)getLocationDetailsWithCompletionBlock:(void (^)(NSDictionary * object))completionBlock;
+
+
+
 @end

@@ -10,4 +10,8 @@
 
 @interface UILabel (Moving)
 -(void) changeColorOfLabalWithDuration:(NSInteger ) time;
+-(void) createTimeLabel;
+-(void)createDateLabel;
+-(void) setClock;
+-(void)createDateLabelWithFormat:(NSString *)dateFromat;
 @end

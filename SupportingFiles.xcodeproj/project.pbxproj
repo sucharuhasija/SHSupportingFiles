@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C786BB2A1C7B253600373189 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C786BB291C7B253600373189 /* AssetsLibrary.framework */; };
+		C786BB2C1C7B308600373189 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C786BB2B1C7B308600373189 /* CoreLocation.framework */; };
+		C786BB2E1C7B45DF00373189 /* login.Storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C786BB2D1C7B45DF00373189 /* login.Storyboard */; };
+		C786BB301C7B496400373189 /* images.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C786BB2F1C7B496400373189 /* images.jpeg */; };
+		C786BB331C7B4C1300373189 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C786BB321C7B4C1300373189 /* LoginViewController.m */; };
 		E26FB0231C7A3C3E004285A8 /* UIViewController+SHSupportingFiles.m in Sources */ = {isa = PBXBuildFile; fileRef = E26FB0221C7A3C3E004285A8 /* UIViewController+SHSupportingFiles.m */; };
 		E28961591C6DFADC00431593 /* STableViewFile.m in Sources */ = {isa = PBXBuildFile; fileRef = E28961581C6DFADC00431593 /* STableViewFile.m */; };
 		E289615D1C6E1B7E00431593 /* SHTextFeild.m in Sources */ = {isa = PBXBuildFile; fileRef = E289615C1C6E1B7E00431593 /* SHTextFeild.m */; };
@@ -70,6 +75,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C786BB291C7B253600373189 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		C786BB2B1C7B308600373189 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C786BB2D1C7B45DF00373189 /* login.Storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = login.Storyboard; sourceTree = "<group>"; };
+		C786BB2F1C7B496400373189 /* images.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = images.jpeg; sourceTree = "<group>"; };
+		C786BB311C7B4C1300373189 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		C786BB321C7B4C1300373189 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		E26FB0201C7A3BF2004285A8 /* SHUtilityFiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHUtilityFiles.h; sourceTree = "<group>"; };
 		E26FB0211C7A3C3E004285A8 /* UIViewController+SHSupportingFiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+SHSupportingFiles.h"; path = "SupportingFiles/UIViewController+SHSupportingFiles.h"; sourceTree = "<group>"; };
 		E26FB0221C7A3C3E004285A8 /* UIViewController+SHSupportingFiles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+SHSupportingFiles.m"; path = "SupportingFiles/UIViewController+SHSupportingFiles.m"; sourceTree = "<group>"; };
@@ -199,6 +210,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C786BB2C1C7B308600373189 /* CoreLocation.framework in Frameworks */,
+				C786BB2A1C7B253600373189 /* AssetsLibrary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,8 +239,8 @@
 		E28961771C6E37B500431593 /* NSString Category */ = {
 			isa = PBXGroup;
 			children = (
-				E289615E1C6E2B2200431593 /* NSString+SupportingFiles.h */,
 				E289615F1C6E2B2200431593 /* NSString+SupportingFiles.m */,
+				E289615E1C6E2B2200431593 /* NSString+SupportingFiles.h */,
 			);
 			name = "NSString Category";
 			sourceTree = "<group>";
@@ -372,6 +385,7 @@
 		E289622E1C6E3E3600431593 /* Final Product */ = {
 			isa = PBXGroup;
 			children = (
+				E28962311C6E3E9700431593 /* Location Helper */,
 				E26FB0211C7A3C3E004285A8 /* UIViewController+SHSupportingFiles.h */,
 				E26FB0221C7A3C3E004285A8 /* UIViewController+SHSupportingFiles.m */,
 			);
@@ -408,6 +422,7 @@
 				E28961A91C6E3E1900431593 /* APTimeZones */,
 			);
 			name = "Location Helper";
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 		E28962321C6E3EE500431593 /* MBProgressHUD */ = {
@@ -471,6 +486,9 @@
 		E28962381C6E41D200431593 /* Default Login View */ = {
 			isa = PBXGroup;
 			children = (
+				C786BB2D1C7B45DF00373189 /* login.Storyboard */,
+				C786BB311C7B4C1300373189 /* LoginViewController.h */,
+				C786BB321C7B4C1300373189 /* LoginViewController.m */,
 			);
 			name = "Default Login View";
 			sourceTree = "<group>";
@@ -508,6 +526,9 @@
 		E2AADC331C6B42BC00F7056A = {
 			isa = PBXGroup;
 			children = (
+				C786BB2F1C7B496400373189 /* images.jpeg */,
+				C786BB2B1C7B308600373189 /* CoreLocation.framework */,
+				C786BB291C7B253600373189 /* AssetsLibrary.framework */,
 				E2AADC3E1C6B42BD00F7056A /* SupportingFiles */,
 				E289622E1C6E3E3600431593 /* Final Product */,
 				E2AADC3D1C6B42BD00F7056A /* Products */,
@@ -536,7 +557,6 @@
 				E28962341C6E3FFE00431593 /* UIView Category */,
 				E28962331C6E3FAC00431593 /* Supporting Fonts */,
 				E28962321C6E3EE500431593 /* MBProgressHUD */,
-				E28962311C6E3E9700431593 /* Location Helper */,
 				E28962301C6E3E7700431593 /* PDF helper class */,
 				E289622F1C6E3E4800431593 /* Networking files */,
 				E28961921C6E3DDA00431593 /* Label Category */,
@@ -625,8 +645,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C786BB2E1C7B45DF00373189 /* login.Storyboard in Resources */,
 				E2AADC4F1C6B42BD00F7056A /* LaunchScreen.storyboard in Resources */,
 				E28962091C6E3E1900431593 /* timezonesDB.json in Resources */,
+				C786BB301C7B496400373189 /* images.jpeg in Resources */,
 				E2AADC4C1C6B42BD00F7056A /* Assets.xcassets in Resources */,
 				E2AADC4A1C6B42BD00F7056A /* Main.storyboard in Resources */,
 				E289620A1C6E3E1900431593 /* BlackTie-Light-webfont.ttf in Resources */,
@@ -672,6 +694,7 @@
 				E28962291C6E3E1900431593 /* UIView+WebCacheOperation.m in Sources */,
 				E289620B1C6E3E1900431593 /* CentralDataManager.m in Sources */,
 				E28962211C6E3E1900431593 /* SDWebImageManager.m in Sources */,
+				C786BB331C7B4C1300373189 /* LoginViewController.m in Sources */,
 				E289617F1C6E380F00431593 /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,
 				E2AADC441C6B42BD00F7056A /* AppDelegate.m in Sources */,
 				E28961FE1C6E3E1900431593 /* AFHTTPSessionManager.m in Sources */,

@@ -124,5 +124,50 @@
 
 }
 
+-(NSString *)getAgeFromDateString:(NSString *)date
+{
+
+
+
+return [NSString stringWithFormat:@"%li",[date getAge]];
+}
+-(NSString *) getFullAgeDetailFromDateString:(NSString *) date
+{
+
+
+
+return @"";
+}
+-(void)getLocationDetailsWithCompletionBlock:(void (^)(NSDictionary * object))completionBlock
+{
+    
+ 
+
+    [[LocationHelper sharedObject] startLocationUpdating];
+    [LocationHelper sharedObject].delegate = self;
+  
+ [[LocationHelper sharedObject] getLocationDetailsWithCompletionBlock:^(NSDictionary *objectcompletionBlock) {
+    
+     completionBlock(objectcompletionBlock);
+ 
+ 
+ }];
+    
+}
+-(void)locationUpdatedWithBlock:(NSDictionary *)dict
+{
+
+
+
+
+}
+-(NSString *)getTimeZoneFromLocation:(CLLocation *) location;
+{
+
+
+    
+    NSTimeZone* localTimeZone = [[APTimeZones sharedInstance] timeZoneWithLocation:location];
+   return  [localTimeZone abbreviation];
+}
 
 @end

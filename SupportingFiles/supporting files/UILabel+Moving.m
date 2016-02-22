@@ -7,6 +7,7 @@
 //
 
 #import "UILabel+Moving.h"
+#import "NSDate+StartTime.h"
 static int value = 10;
 #define ARC4RANDOM_MAX  0x100000000
 
@@ -101,4 +102,28 @@ static int value = 10;
 
 
 }
+-(void) createTimeLabel{
+
+self.text = [[NSDate date] getCurrentTime];
+}
+-(void)createDateLabel{
+    
+    
+    self.text = [[NSDate date] getCurrentDate];
+}
+-(void)createDateLabelWithFormat:(NSString *)dateFromat{
+
+
+    self.text = [[NSDate date] getCurrentDateWithFormat:@"MMM-YY/DD"];
+}
+-(void) setClock
+{
+
+    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(createTimeLabel) userInfo:nil repeats:YES];
+    
+ 
+
+}
+
+
 @end

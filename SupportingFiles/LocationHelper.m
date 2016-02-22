@@ -58,8 +58,8 @@
 {
     if (![CLLocationManager locationServicesEnabled])
     {
-        [[UserDefaultHelper sharedObject]setLocationDisable:@"1"];
-        [Helper showAlertWithTitle:@"Location Services disabled" Message:@"App requires location services to find your current city weather.Please enable location services in Settings."];
+//        [[NSUserDefaults standardUserDefaults] setLocationDisable:@"1"];
+//        [Helper showAlertWithTitle:@"Location Services disabled" Message:@"App requires location services to find your current city weather.Please enable location services in Settings."];
     }
     else
     {
@@ -118,11 +118,11 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
     CLLocation *currentLocation = newLocation;
-    DLog(@"didUpdateToLocation: %@", currentLocation);
+    NSLog(@"didUpdateToLocation: %@", currentLocation);
     if (currentLocation != nil) {
         
         
-        CLLocation *currentLocation = [locations objectAtIndex:0];
+        CLLocation *currentLocation = newLocation;
         [manager stopUpdatingLocation];
         
         CLGeocoder *geocoder = [[CLGeocoder alloc] init] ;
@@ -133,14 +133,17 @@
                  CLPlacemark *placemark = [placemarks objectAtIndex:0];
                  NSLog(@"\nCurrent Location Detected\n");
                  NSLog(@"placemark %@",placemark);
-                 // NSString *locatedAt = [[placemark.addressDictionary valueForKey:@"FormattedAddressLines"] componentsJoinedByString:@", "];
+                  NSString *locatedAt = [[placemark.addressDictionary valueForKey:@"FormattedAddressLines"] componentsJoinedByString:@", "];
                  NSString  *strForCurrentLongitude= [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.longitude];
                  NSString  *strForCurrentLatitude = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.latitude];
-                 //NSString *Address = [[NSString alloc]initWithString:locatedAt];
+                 NSString *Address = [[NSString alloc]initWithString:locatedAt];
                  NSString *Zipcode = [[NSString alloc]initWithString:placemark.postalCode];
                  NSLog(@"%@",Zipcode);
                  NSString * city = [[NSString alloc] initWithString:placemark.locality];
   
+                 NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:city,@"city",Address ,@"Address",strForCurrentLatitude,@"latitude",strForCurrentLongitude,@"longitude",Zipcode,@"Zipcode", nil];
+                 [self.delegate locationUpdatedWithBlock:dict];
+                 
              }
              else
              {
@@ -154,15 +157,27 @@
 //        [[UserDefaultHelper sharedObject]setCurrentLongitude:strForCurrentLongitude];
     
 }
-
-- (void)locationManagerDidPauseLocationUpdates:(CLLocationManager *)manager
-{
-    NSLog(@"Paused Updatting");
 }
-
-- (void)locationManagerDidResumeLocationUpdates:(CLLocationManager *)manager
+//
+//- (void)locationManagerDidPauseLocationUpdates:(CLLocationManager *)manager
+//{
+//    NSLog(@"Paused Updatting");
+//}
+//
+//- (void)locationManagerDidResumeLocationUpdates:(CLLocationManager *)manager
+//{
+//    NSLog(@"Resumed Updatting");
+//}
+-(void)getLocationDetailsWithCompletionBlock:(void (^)(NSDictionary * object))completionBlock
 {
-    NSLog(@"Resumed Updatting");
-}
 
+
+
+
+
+
+
+
+
+}
 @end
